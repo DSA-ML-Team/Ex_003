@@ -40,15 +40,45 @@ public class BinarySearchTree<T extends Comparable<T>> implements IBinarySearchT
 	}
 	
 
-
-
 	
 	public IBinaryTreeNode<T> getRootNode(){
 		return root;
 	}
 	
+	
+	
+	
+	int deep(IBinaryTreeNode<T> d33p){
+	    if(d33p==null){
+	        return 0;
+	    }
+	    int leftDepth = deep(d33p.getLeftChild());
+	    int rightDepth = deep(d33p.getRightChild());
+	    return rightDepth>leftDepth?rightDepth+1:leftDepth+1;
+	}
+	
+	
+	
+	
 	public boolean isFull() {
-		return ;
+		
+		if(root==null){
+	         return false;
+	      }
+	      if(root.getLeftChild()==null&&root.getRightChild()==null){
+	          return true;
+	      }
+	     int leftDepth = deep(root.getLeftChild());
+	     int rightDepth = deep(root.getRightChild());
+	     if(leftDepth!=rightDepth){
+	        return false;
+	     }
+	    if(root.getLeftChild()&& root.getRightChild()){
+	       return true;
+	    }else{
+	       return false;
+	    }
+	       
 	}
 	
 	
